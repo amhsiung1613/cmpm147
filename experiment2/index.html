@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 02 - Living Impressions</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,30 +32,41 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 02 - Living Impressions</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
 					<!-- canvas will be added here -->
+					</div>
 				</div>
                 <div class="fullscreen-box">
+					<button id="reimagine">Reimagine</button>
                     <button id="fullscreen">Fullscreen</button>
                 </div>
 			</div>
 
 			<div class="minor-section">
+                <div class="image-wrapper">
+                    <img src="img/taiwan-beach.png">
+                </div>
+			</div>
+
+			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>This project offers a generative, living impression of the above image. In this experiment, I attempted to transform relevant portions of my reference image onto my blank digital canvas. In order to create a dynamic and textured landscape, I used p5.js, a JavaScript library for creative coding. I took inspiration from a multitude of sources, including my professor, Wes Modes, utilizing the mountain formation code from his example project as a starting point. To better represent the parabolic curve of the coast, I experimented with bezier curves and coordinates. In order to imitate the following landforms, I scaled the existing parabolic curve coordinates to be a better match.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>In order to introduce an ebb and flow motion to the water, I coded the coordinates so that they move along a sin wave every frame.This was a little harder than I originally expected since the parabola would occasionally come too far on-screen or go too far off-screen. I needed to play with the numbers for a while before getting the perfect calculations. This allowed the water to look like a tide, coming inland and flowing out to sea every so often. </p>
+				<p>I also implemented a tracking mechanism where the wave will slightly follow the horizontal movement of the mouse, adding some variety into the ebb and flow of the wave.	This was done by having the coordinates of the parabola be affected by the x-position of the mouse. The calculations for this were interesting in that it could greatly affect the ebb and flow of the wave if the factor wasn't scaled correctly.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>My original idea was too difficult to implement. I had wanted to incorporate a Perlin noise wave in a curve, to further imitate the ebb and flow of tides. Unfortunately, this was much more difficult than I had originally anticipated. I ultimately decided to imitate the general shape of the shore instead, with ebb and flow motions as my replacement Perlin noise wave. That, fortunately, works pretty well. I had also wanted to use a static Perlin noise wave to define the rocks and the grass but I couldn't figure out how to rotate a Perlin noise wave. </p>	
+				<p>If I had more time, I would add more texture to the rocks, the grass, and the edge of the waves, where it hits the shore.</p>
+				
 			</div>
 
 		</section>

@@ -7,24 +7,26 @@
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
+let seed = 239;
+// let yoff = 0.0;
 
-// Globals
-let myInstance;
-let canvasContainer;
-var centerHorz, centerVert;
+const grassColor = "#81b387";
+const skyColor = "#69ade4";
+const mountainColor = "#035c4d";
+const oceanColor = "#05367a";
+const sandColor = "#b0a17b";
+const rockColor = "#ccb999";
 
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
+// class MyClass {
+//     constructor(param1, param2) {
+//         this.property1 = param1;
+//         this.property2 = param2;
+//     }
 
-    myMethod() {
-        // code to run when method is called
-    }
-}
+//     myMethod() {
+//         // code to run when method is called
+//     }
+// }
 
 function resizeScreen() {
   centerHorz = canvasContainer.width() / 2; // Adjusted for drawing logic
@@ -34,6 +36,10 @@ function resizeScreen() {
   // redrawCanvas(); // Redraw everything based on new size
 }
 
+$("#reimagine").click(function() {
+  seed++;
+});
+
 // setup() function is called once when the program starts
 function setup() {
   // place our canvas, making it fit our container
@@ -41,9 +47,6 @@ function setup() {
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
   // resize canvas is the page is resized
-
-  // create an instance of the class
-  myInstance = new MyClass("VALUE1", "VALUE2");
 
   $(window).resize(function() {
     resizeScreen();
@@ -53,24 +56,74 @@ function setup() {
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);    
-  // call a method on the instance
-  myInstance.myMethod();
+  randomSeed(seed);
 
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
+  background(skyColor);
+  
   noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
-
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+  
+  fill(rockColor);
+  bezier(
+    689, 
+    446, 
+    280, 
+    686, 
+    -8888, 
+    28, 
+    689,
+    95,
+  );
+  
+  noStroke();
+  
+  fill(grassColor);
+  // rect(0, 160, 650, 240);
+  bezier(
+    689, 
+    346, 
+    280, 
+    286, 
+    -796, 
+    37, 
+    989,
+    113,
+  );
+  
+  fill(sandColor);
+  // rect(0, 230, 650, 240);
+  bezier(
+    689, 
+    320, 
+    280, 
+    266, 
+    -296, 
+    37, 
+    989,
+    113,
+  );
+  
+  noStroke();
+  fill(oceanColor);
+  const scrub = mouseX/width;
+  let z = random();
+  let x = width * (((random() + sin(scrub + millis() / 3000.0) + 150) / (z * 15)) % 1);
+  let s = width / 50 / z;
+  let y = height / 2 + height / 20 / z;
+  
+  bezier(x + 600, y - s + 100, (x - s / 4) + 100, y,( x + s / 4) - 300, y - 180, 689, 95);
+  
+  fill(mountainColor);
+  beginShape();
+  vertex(0, height / 4);
+  const steps = 10;
+  for (let i = 0; i < steps + 1; i++) {
+    let x = (width * i) / steps;
+    let y =
+      height / 4 - (random() * random() * random() * height) / 4 - height / 50;
+    vertex(x, y);
+  }
+  vertex(width, height / 4);
+  endShape(CLOSE);
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
