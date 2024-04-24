@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 03 - Alternate Worlds</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,11 +32,26 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 03 - Alternate Worlds</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
 					<!-- canvas will be added here -->
+					<button id="reseedButton">
+					reseed
+					</button>
+					<span id="seedReport"></span>
+					<hr />
+					<span>
+					<span id="canvasContainer" style="margin: 10px;"></span>
+					<textarea cols="30" rows="40" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 640px; margin: 10px; font-family: monospace;"></textarea>
+					</span>					
+				</div>
+				<div id="canvas-container2">
+					<span>
+					<span id="canvasContainer2" style="margin: 10px;"></span>
+					<textarea cols="30" rows="40" id="asciiBox2" style="opacity: 0.5; letter-spacing: 1ex; width: 640px; margin: 10px; font-family: monospace;"></textarea>
+					</span>					
 				</div>
                 <div class="fullscreen-box">
                     <button id="fullscreen">Fullscreen</button>
@@ -45,17 +60,17 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>A generative overworld and dungeon landscape map with variation in each generative sequence as well as signs of life in some aspect.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>The variation within the landscapes are done with Perlin noise functions. The rainfall follows the mouse y-axis via scrub and has a height variable that continuously brings it's height down. Hallways between dungeon rooms were created by calculatign the mid point of the first room and the mid point of the secodn room and creating a bath between the two rooms. I had wanted to incorporate a "room shake" effect to imply that the rooms were being destroyed but I couldn't figure it out in time.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>The most irritating part of this experiment has been autotiling, which I sitll can't get to work, and incorporating these two generators into my website. Website incorporation took a lot of trial and error since I wasnt sure which functions and variables were instance specific. It definitely took a lot of time to figure out.</p>
 			</div>
 
 		</section>
