@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 03 - Alternate Worlds</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 03 - Alternate Worlds</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					<!-- canvas will be added here -->
+					<button id="reseedButton">
+					reseed
+					</button>
+					<span id="seedReport"></span>
+					<hr />
+					<span>
+					<span id="canvasContainer" style="margin: 10px;"></span>
+					<textarea cols="30" rows="40" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 640px; margin: 10px; font-family: monospace;"></textarea>
+					</span>					
+				</div>
+				<div id="canvas-container2">
+					<span>
+					<span id="canvasContainer2" style="margin: 10px;"></span>
+					<textarea cols="30" rows="40" id="asciiBox2" style="opacity: 0.5; letter-spacing: 1ex; width: 640px; margin: 10px; font-family: monospace;"></textarea>
+					</span>					
+				</div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>A generative overworld and dungeon landscape map with variation in each generative sequence as well as signs of life in some aspect.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>The variation within the landscapes are done with Perlin noise functions. The rainfall follows the mouse y-axis via scrub and has a height variable that continuously brings it's height down. Hallways between dungeon rooms were created by calculatign the mid point of the first room and the mid point of the secodn room and creating a bath between the two rooms. I had wanted to incorporate a "room shake" effect to imply that the rooms were being destroyed but I couldn't figure it out in time.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>The most irritating part of this experiment has been autotiling, which I sitll can't get to work, and incorporating these two generators into my website. Website incorporation took a lot of trial and error since I wasnt sure which functions and variables were instance specific. It definitely took a lot of time to figure out.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
