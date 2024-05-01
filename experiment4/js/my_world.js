@@ -37,10 +37,7 @@ let [tw, th] = [p3_tileWidth(), p3_tileHeight()];
 
 let clicks = {};
 
-// function p3_tileClicked(i, j) {
-//   let key = [i, j];
-//   clicks[key] = 1 + (clicks[key] | 0);
-// }
+
 function p3_tileClicked(i, j) {
   let key = i + "," + j; // Use a string key for simplicity in handling coordinates
   clicks[key] = 1 + (clicks[key] || 0); // Record click counts
@@ -65,28 +62,6 @@ function p3_tileClicked(i, j) {
   }
 }
 
-
-// function triggerRipple(clickedX, clickedY) {
-//   const rippleRadius = 10; // Define the radius of the ripple effect
-//   const rippleDelay = 30; // Delay factor in milliseconds
-
-//   for (let dy = -rippleRadius; dy <= rippleRadius; dy++) {
-//     for (let dx = -rippleRadius; dx <= rippleRadius; dx++) {
-//       let dist = Math.sqrt(dx * dx + dy * dy);
-//       let delay = dist * rippleDelay;
-//       let targetX = clickedX + dx;
-//       let targetY = clickedY + dy;
-//       let key = targetX + "," + targetY;
-
-//       setTimeout(() => {
-//         clicks[key] = (clicks[key] || 0) + 1; // Increment to simulate a visual change
-//         if (clicks[key] >= 10) { // Reset or fade out after some time or number of increments
-//           clicks[key] = 0;
-//         }
-//       }, delay);
-//     }
-//   }
-// }
 
 function p3_drawBefore() {}
 

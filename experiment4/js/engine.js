@@ -1,9 +1,14 @@
+// sketch.js - purpose and description here
+// Author: Your Name
+// Date:
+
+// Here is how you might set up an OOP p5.js project
+// Note that p5.js looks for a file called sketch.js
+
+// Constants - User-servicable parts
 const containerId = "#canvas-container";
 
-"use strict";
-
-/* global p5 */
-/* exported preload, setup, draw, mouseClicked */
+// Globals
 let myInstance;
 let canvasContainer;
 var centerHorz, centerVert;
@@ -15,8 +20,6 @@ function resizeScreen() {
   resizeCanvas(canvasContainer.width(), canvasContainer.height());
   // redrawCanvas(); // Redraw everything based on new size
 }
-// Project base code provided by {amsmith,ikarth}@ucsc.edu
-
 
 let tile_width_step_main; // A width step is half a tile's width
 let tile_height_step_main; // A height step is half a tile's height
@@ -73,9 +76,13 @@ function preload() {
   }
 }
 
+// setup() function is called once when the program starts
 function setup() {
-  let canvas = createCanvas(800, 400);
-  canvas.parent("container");
+  // place our canvas, making it fit our container
+  canvasContainer = $(containerId);
+  let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
+  canvas.parent(containerId);
+  // resize canvas is the page is resized
 
   camera_offset = new p5.Vector(-width / 2, height / 2);
   camera_velocity = new p5.Vector(0, 0);
@@ -84,19 +91,18 @@ function setup() {
     window.p3_setup();
   }
 
-  let label = createP();
-  label.html("World key: ");
-  label.parent("container");
-
-  let input = createInput("xyzzy");
-  input.parent(label);
-  input.input(() => {
-    rebuildWorld(input.value());
+  let inputKey = $("#world-seed");
+  // event handler if the input key changes
+  inputKey.change(() => {
+    rebuildWorld(inputKey.val());
   });
 
-  createP("Arrow keys scroll. Clicking changes tiles.").parent("container");
+  rebuildWorld(inputKey.val());
 
-  rebuildWorld(input.value());
+  $(window).resize(function() {
+    resizeScreen();
+  });
+  resizeScreen();
 }
 
 function rebuildWorld(key) {
@@ -109,18 +115,7 @@ function rebuildWorld(key) {
   tile_rows = Math.ceil(height / (tile_height_step_main * 2));
 }
 
-function mouseClicked() {
-  let world_pos = screenToWorld(
-    [0 - mouseX, mouseY],
-    [camera_offset.x, camera_offset.y]
-  );
-
-  if (window.p3_tileClicked) {
-    window.p3_tileClicked(world_pos[0], world_pos[1]);
-  }
-  return false;
-}
-
+// draw() function is called repeatedly, it's the main animation loop
 function draw() {
   // Keyboard controls!
   if (keyIsDown(LEFT_ARROW)) {
@@ -156,7 +151,7 @@ function draw() {
     window.p3_drawBefore();
   }
 
-  let overdraw = 0.1;
+  let overdraw = 0.2;
 
   let y0 = Math.floor((0 - overdraw) * tile_rows);
   let y1 = Math.floor((1 + overdraw) * tile_rows);
@@ -186,6 +181,18 @@ function draw() {
   if (window.p3_drawAfter) {
     window.p3_drawAfter();
   }
+}
+
+function mouseClicked() {
+  let world_pos = screenToWorld(
+    [0 - mouseX, mouseY],
+    [camera_offset.x, camera_offset.y]
+  );
+
+  if (window.p3_tileClicked) {
+    window.p3_tileClicked(world_pos[0], world_pos[1]);
+  }
+  return false;
 }
 
 // Display a discription of the tile at world_x, world_y.
