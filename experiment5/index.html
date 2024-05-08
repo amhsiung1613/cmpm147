@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment 03 - Alternate Worlds</title>
+	<title>Experiment 05 - Evolutionary Impressions</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -25,6 +25,7 @@
 	<!-- Use me for a JavaScript OOP Project -->
 	<script type="text/javascript" src="./js/project.js" DEFER></script>
 	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/mydesign.js" DEFER></script>
 	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
 </head>
 <body>
@@ -32,29 +33,49 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment 03 - Alternate Worlds</h1>
+			<h1>Experiment 05 - Evolutionary Impressions</h1>
 
-			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
-					<button id="reseedButton">
-					reseed
-					</button>
-					<span id="seedReport"></span>
-					<hr />
-					<span>
-					<span id="canvasContainer" style="margin: 10px;"></span>
-					<textarea cols="30" rows="40" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 640px; margin: 10px; font-family: monospace;"></textarea>
-					</span>					
-				</div>
-				<div id="canvas-container2">
-					<span>
-					<span id="canvasContainer2" style="margin: 10px;"></span>
-					<textarea cols="30" rows="40" id="asciiBox2" style="opacity: 0.5; letter-spacing: 1ex; width: 640px; margin: 10px; font-family: monospace;"></textarea>
-					</span>					
-				</div>
-                <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
+			<div class="minor-section results">
+                <div class="results-top">
+                    <div class="image-container">
+                        <p id="original"></p>
+                        <p class="caption"></p>
+                    </div>
+                    <div class="image-container">
+                        <p id="active"></p>
+                        <p>Active Image</p>
+                    </div>
+                    <div class="image-container">
+                        <p id="best"></p>
+                        <p>Best Image</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="controls-col1">
+                        <select id="dropper"></select>
+                        <button id="restart">
+                        restart
+                        </button>
+                        <p>
+                        Mutation rate (<span id="rate"></span>%):<br /><input
+                            id="slider"
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="100"
+                        />
+                        </p>
+                    </div>
+                    <div class="controls-col2">
+                        <p>Active score: <span id="activeScore"></span></p>
+                        <p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+                        <p>Best score: <span id="bestScore"></span></p>
+                    </div>
+                </div>
+
+                <div class="results-bottom">
+                    <p id="memory" data-max-items="28"></p>
                 </div>
 			</div>
 
